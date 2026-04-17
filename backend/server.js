@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 
 
@@ -25,8 +26,9 @@ const taskSchema = new mongoose.Schema({
 const Task = mongoose.model("Task", taskSchema);
 
 // GET all tasks 
-mongoose.connect("mongodb://127.0.0.1:27017/taskmanager")
-  .then(() => console.log("MongoDB connected"))
+// mongoose.connect("mongodb+srv://tamilguru2:tamil123@cluster0.yxzh3.mongodb.net/taskmanager?retryWrites=true&w=majority")
+mongoose.connect(process.env.MONGO_URI)  
+.then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
 
